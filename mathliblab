@@ -1,0 +1,51 @@
+/**
+* Name: Raymond Zhang
+* Program Name: Math Library Practice
+* Date: 12/3/24
+* Extra: None required
+*/
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int ans1, ans2, ans3;
+
+    // Q1
+    cout << "Raymond is given this list of numbers: [1, 4, 9, 7, 3, 10, 11, 15]." << endl;
+    cout << "His goal is to find the positive difference between each 2 numbers in the list. For instance, for the numbers 3 and 10, instead of having the difference be -7, he wants the answer to be 7." << endl;
+    cout << "Now, he wants to find the difference between 4 and 9, but is scared since he knows it will be a negative difference. Help Raymond out by using Absolute Value in order to solve his issue." << endl;
+    cout << "Enter the absolute value of 4 - 9: ";
+    cin >> ans1; // Takes in an integer input.
+    if (ans1 == abs(4-9)) { // Checks if the user inputs the correct answer (if its equivalent to the absolute value of 4-9 which is 5.)
+        cout << "Correct!" << endl;
+    }
+    else {
+        cout << "Incorrect. The absolute value of 4 - 9 is " << abs(4-9) << "." << endl;
+    }
+    
+    // Q2
+    cout << "Tyler doesn’t like decimals very much. Every time he gets under a 50% on a test or quiz, his parents turn off the WiFi." << endl;
+    cout << "By finding the ceiling of the score (as a decimal) he gets on his test/quizzes, he can make sure that he always does well." << endl;
+    cout << "On his last test, Tyler received a 37%. Oh no! Help Tyler out by finding the ceiling of 0.37." << endl;
+    cout << "Enter the ceiling of 0.37: ";
+    cin >> ans2;
+    if (ans2 == ceil(0.37)) {
+        cout << "Correct!" << endl;
+    }
+    else {
+        cout << "Incorrect. The ceiling of 0.37 is " << ceil(0.37) << "." << endl; // Prints out a statement that includes the ceiling of 0.37, giving the user the right answer.
+    }
+
+    // Q3
+    cout << "Given that a right triangle has sides of length 6 and 8, find the hypotenuse of the respective right triangle." << endl;
+    cout << "Enter the length of the hypotenuse: ";
+    cin >> ans3;
+    if (ans3 == hypot(6, 8)) { // Checks if the user enters an answer that is equivalent to the answer that is returned from the hypot() function. In this case, it would be 10.
+        cout << "Correct!" << endl;
+    }
+    else {
+        cout << "Incorrect. The hypotenuse of the right triangle is " << hypot(6, 8) << "." << endl;
+    }
+}
