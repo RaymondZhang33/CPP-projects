@@ -1,0 +1,15 @@
+/*
+* Names: Raymond Zhang
+* Program Name: Time & Date Lab
+* Date: 12/12/24
+* Extra: 
+*/
+#include <iostream>
+using namespace std;
+#include <ctime>
+
+int main() {
+    time_t now = time(nullptr); // Function takes in a null pointer as a parameter
+    cout << "Current Local Time: " << ctime(&now); // Prints out the time in human-readable format
+    return 0;
+}
