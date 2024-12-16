@@ -1,0 +1,69 @@
+/* 
+* Name: Raymond Zhang
+* Program Name: Functions Lab
+* Date: 11/21/24
+*/
+#include <iostream>
+using namespace std;
+
+void countdown();
+void customGreet(string name, int times);
+int getFavoriteNumber();
+int calculateAverage(int a, int b, int c);
+
+int main() {
+    string name;
+    int times, a, b, c;
+    countdown(); // Calls countdown function
+
+    cout << "Enter your name: ";
+    getline(cin, name);
+    cout << "Enter a number: ";
+    cin >> times; // Takes in user input and stores in times variable.
+    customGreet(name, times);
+
+    int favNumber = getFavoriteNumber();
+    cout << "Your favorite number is: " << favNumber << endl;
+
+    cout << "Enter three integers: ";
+    cin >> a >> b >> c;
+
+    int average = calculateAverage(a, b, c);
+
+    // If the average is divisible by 3, print the average normally
+    if ((a + b + c) % 3 == 0) {
+        cout << "The average is: " << average << endl;
+    } 
+    else {
+        cout << "The average is: " << average << ", but this answer is rounded down to the nearest integer." << endl;
+    }
+
+    return 0;
+}
+
+// Exercise #1
+void countdown() {
+    for (int i = 10; i > 0; i--) {
+        cout << i << endl;
+    }
+    cout << "Lift off!" << endl; // Prints after loop terminates
+}
+
+// Exercise #2
+void customGreet(string name, int times) { // Has two parameters of a string and integer.
+    for (int i = 0; i < times; i++) {
+        cout << "Hello, " << name << "!" << endl;
+    }
+}
+
+// Exercise #3
+int getFavoriteNumber() {
+    int favNum = 4;
+    return favNum;
+}
+
+// Exercise #4
+int calculateAverage(int a, int b, int c) {
+    int average = (a + b + c) / 3;
+    return average;
+}
