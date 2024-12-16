@@ -1,0 +1,41 @@
+/* 
+* Names: Raymond Zhang
+* Program Name: Mood Tracker
+* Date: 10/7/24
+* Extra: I added an additional case to print out a very inspiring message to the user.
+*/
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int mood; /* Intializes the mood variable. */
+    cout << "Welcome to the Mood Tracker!" << endl;
+    cout << "How are you feeling today? Enter the number corresponding to your current mood." << endl;
+    cout << "1. Happy\n2. Sad\n3. Angry\n4. Gloomy\n5. Pleasant\n6. Inspiring Message\n";
+    cin >> mood;
+    switch (mood) {
+        case 1: /* Executes the following code if the user enters the number 1. */
+            cout << "I'm glad to hear it! Keep living life to your fullest and never forget about those happy moments.";
+            break;
+        case 2:
+            cout << "Sorry to hear it! Maybe you aren't feeling your best right now, but that's okay! Make sure to live in happy times and to never let those sad feelings take you down.";
+            break;
+        case 3:
+            cout << "DONT HURT ME";
+            break;
+        case 4:
+            cout << "I can't think of anything creative to say so i'm just gonna put some chinese characters here. 别灰暗 别灰暗 别灰暗 别灰暗 别灰暗 别灰暗";
+            break;
+        case 5:
+            cout << "I'm glad to hear it! Maybe you aren't feeling estatic, or lively, but it's nice to just feel decent. Remember, feeling decent is better than being in a bad mood.";
+            break;
+        case 6: /* Extra: */
+            cout << "You have stumbled upon this inspiring message. Remember, grass is yellow and the sun is blue, so spend with time with your loved ones too.";
+            break;
+        default: /* Executes if the value of the mood variable does not match with any of the case statements. */
+            cout << "You did not enter one of the options provided. Please try again.";
+            break;
+        }
+    return 0;
+}
