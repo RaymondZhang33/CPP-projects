@@ -9,7 +9,18 @@ using namespace std;
 #include <ctime>
 
 int main() {
+    int offset, ans;
+    string color;
     time_t now = time(nullptr); // Function takes in a null pointer as a parameter
     cout << "Current Local Time: " << ctime(&now); // Prints out the time in human-readable format
+    cout << "Input a time offset for UTC in hours: ";
+    cin >> offset;
+    now += offset * 3600; // 3600 = 60m x 60s
+    cout << "Current Time of UTC Offset: " << ctime(&now);
+    cout << "What is your favorite color? ";
+    time_t start = time(nullptr);
+    cin >> color;
+    time_t end = time(nullptr); // Gets the time after the user has inputted something.
+    cout << "It took you " << abs(start - end) << " seconds to answer the question.";
     return 0;
 }
