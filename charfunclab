@@ -1,0 +1,29 @@
+/*
+Name: Raymond Zhang
+Project Name: Character Functions Practice
+Teacher: Mrs. Alblas
+Date: 12/6/24
+*/
+#include <iostream>
+using namespace std;
+#include <cctype>
+int main() {
+    string name, newname;
+    bool check = true;
+    cout << "What is your name? ";
+    getline(cin, name); // Ensures it is okay if the user enters a space
+    for (int i = 0; i < name.length(); i++) {
+        if (isalpha(name[i]) || isblank(name[i])) { // Checks if the user enters solely spaces/letters
+            newname += toupper(name[i]); // Adds the uppercase character to the string
+        }
+        else {
+            cout << "Your name does not include solely characters. Please restart the program to continue." << endl;
+            check = false;
+            break;
+        }
+    }
+    if (check) {
+        cout << "Here is your name with all characters uppercase: " << newname;
+    }
+    return 0;
+}
