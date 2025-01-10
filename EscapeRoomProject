@@ -184,7 +184,7 @@ void cell() { // User defined function
             case 3:
                 newLine();
                 if (change2 == 1) {
-                    cout << "You crawl through the dark hole. as you go through, you feel the dirt on your knees. You then see a manhole. you push and it gives way to the other side of your cell." << endl;
+                    cout << "You flip open the poster with the canned beans, and you crawl through the dark hole. as you go through, you feel the dirt on your knees. You then see a manhole. you push and it gives way to the other side of your cell." << endl;
                     newLine();
                     if (gate) {
                         cout << "Outside your cell, you have several choices on where to go. Either you can take the left hallway into the cafeteria, or you can take the right hallway into the warden's room, which for some reason is currently unlocked. In front of you is an old wooden door that looks like a closet. Also, to the right of the cafeteria is the workshop. You can also go to the guards locker room across from the warden's room or go to the basement. Which path will you choose?\n 1. Cafeteria\n 2. Warden's Room\n 3. Wooden Door \n 4. Workshop \n 5. Guard's Locker Room \n 6. Basement \n 7. Prison Gate" << endl;
