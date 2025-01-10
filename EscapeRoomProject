@@ -174,7 +174,7 @@ void cell() { // User defined function
                     colorend();
                     cout << "'Money?'" << endl;
                     colorst();
-                    cout << "Not that pardner, food! I heard there's one more can of my favorite in the cafeteria. Why don't you ask the chef there for em and bring 'em to me. Then we'll talk." << endl;
+                    cout << "Not that pardner, food! I heard there's one more can of my FAVORITE in the cafeteria. Why don't you ask the chef there for em and bring 'em to me. Then we'll talk. That poster oveh there the only thang keeping me goin." << endl;
                     colorend();
                 }
                 break;
