@@ -1,0 +1,78 @@
+/* 
+* Names: Raymond Zhang 
+* Program Name: Arrays Lab
+* Date: 1/21/25
+*/
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+
+float calcAverage(float array[], int size);
+
+int main() {
+    // Question 1:
+    int nums[10];
+    int evens = 0;
+    srand(time(0));
+    cout << "Array: ";
+    for (int i = 0; i < 10; i++) {
+        nums[i] = rand() % 10 + 1;
+        cout << nums[i] << " ";
+        if (nums[i] % 2 == 0) { // Checks if the random number is even
+            evens++;
+        }
+    }
+    cout << "\nArray Backwards: ";
+    for (int i = 9; i > -1; i--) {
+        cout << nums[i] << " ";
+    }
+    cout << "\nTotal Even Numbers: " << evens << endl;
+    // Question 2:
+    int weeklysales[7] = {0, 52, 45, 35, 46, 91, 0};
+    string days[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}; // Declares a string array of length 7.
+    int day;
+    string ans = "Yes";
+    while (ans == "Yes") {
+        cout << "Choose a day of the week from Monday through Friday. For example, 1 = Monday, 2 = Tuesday, etc." << endl;
+        cin >> day;
+        if (day >= 1 && day <= 5) {
+            cout << "On " << days[day] << ", we had " << weeklysales[day] << " sales." << endl;
+        }
+        else if (day == 0 || day == 6) {
+            cout << "Unfortunately, we do not open on Sundays and Saturdays." << endl;
+        }
+        else {
+            cout << "You did not enter a valid day of the week." << endl;
+        }
+        cout << "Do you wish to continue? [Yes] or [No]? ";
+        cin >> ans; // Stores user input in ans variable
+        if (ans != "Yes") {
+            cout << "Ok, have a nice day!" << endl;
+            break;
+        }
+    }
+    // Question 3:
+    int ages[20]; // Declares integer array of length 20
+    int age, over15 = 0;
+    for (int i = 0; i < 20; i++) {
+        cout << "Enter age #" << i + 1 << ": ";
+        cin >> age;
+        ages[i] = age; // Sets each array value to the user inputted one
+        if (age > 15) {
+            over15++;
+        }
+    }
+    float array[6] = {85.8, 93.7, 76, 88.5, 100, 91.3}; 
+    cout << "Out of the 20 people you entered, " << over15 << " were over the age of 15." << endl;
+    cout << "The average of the array {85.8, 93.7, 76, 88.5, 100, 91.3} is " << calcAverage(array, 6) << "." << endl;
+}
+// Question 4:
+float calcAverage(float array[], int size) {
+    float sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += array[i];
+    }
+    float avg = round(10 * (sum / size)) / 10;
+    return avg;
+}
