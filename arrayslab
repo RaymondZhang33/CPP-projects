@@ -63,9 +63,9 @@ int main() {
             over15++;
         }
     }
-    float array[6] = {85.8, 93.7, 76, 88.5, 100, 91.3}; 
+    float finalGrade[6] = {85.8, 93.7, 76, 88.5, 100, 91.3}; 
     cout << "Out of the 20 people you entered, " << over15 << " were over the age of 15." << endl;
-    cout << "The average of the array {85.8, 93.7, 76, 88.5, 100, 91.3} is " << calcAverage(array, 6) << "." << endl;
+    cout << "The average of the array {85.8, 93.7, 76, 88.5, 100, 91.3} is " << calcAverage(finalGrade, 6) << "." << endl;
 }
 // Question 4:
 float calcAverage(float array[], int size) {
