@@ -1,0 +1,95 @@
+/* 
+* Names: Raymond Zhang 
+* Program Name: Vector Lab
+* Date: 1/23/25
+*/
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+
+void namegreeter(vector<string> names);
+
+int main() {
+    // Question 1:
+    vector<int> nums = {100, 1, 24, 4, 5, 7, 24, 32, 13, 39};
+    cout << "The third number in the vector is " << nums[2] << "." << endl;
+    nums.pop_back(); // Removes last element from the vector
+    cout << "New Vector: ";
+    for (int num : nums) {
+        cout << num << " ";
+    }
+    // Question 2:
+    bool cont = true;
+    int ans;
+    vector<int> build; // Declares a vector containing integers
+    cout << "\n\nTime to Build a Vector!" << endl;
+    while (cont) {
+        cout << "What would you like to do?\n1. Add Element\n2. Display Current Vector\n3. Display Vector Size\n4. Exit" << endl;
+        cin >> ans;
+        switch (ans) {
+            case 1:
+                int add;
+                cout << "\nWhat integer would you like to add? ";
+                cin >> add;
+                build.push_back(add);
+                cout << add << " has been added to the vector." << endl;
+                break;
+            case 2:
+                cout << "\nHere is the current vector: ";
+                for (int inte : build) { // Iterates through the vector for every element
+                    cout << inte << " ";
+                }
+                cout << "\n";
+                break;
+            case 3:
+                cout << "\nThe size of the vector is " << build.size() << "." << endl;
+                break;
+            case 4:
+                cont = false;
+                break;
+        }
+    }
+    cout << "\n";
+    // Question 3:
+    vector<string> colors;
+    cont = true;
+    string color;
+    char ansy;
+    while (cont) {
+        cout << "Would you like to enter your favorite color? Y or N? ";
+        cin >> ansy;
+        if (toupper(ansy) == 'Y') {
+            cout << "Enter your favorite color: ";
+            cin >> color;
+            colors.push_back(color); // Appends the string to the vector
+        }
+        else {
+            cout << "Well then, here is your full list of your favorite colors: ";
+            for (string color : colors) {
+                cout << color << " ";
+            }
+            cont = false;
+        }
+    }
+    // Question 4:
+    vector<string> names;
+    int namez;
+    cout << "\n\nHow many names do you have? ";
+    cin >> namez;
+    string name;
+    for (int i = 0; i < namez; i++) {
+        cout << "Enter Name #" << i + 1 << ": ";
+        cin >> name;
+        names.push_back(name);
+    }
+    namegreeter(names); // Calls the namegreeter function
+}
+
+void namegreeter(vector<string> names) {
+    cout << "\nHello, ";
+    for (string name : names) {
+        cout << name << " ";
+    }
+    cout << "!!!";
+}
