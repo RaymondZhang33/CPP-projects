@@ -7,23 +7,53 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <bits/stdc++.h>
 using namespace std;
 
+vector<int> storage(int ind1, int ind2);
+
 int main() {
-    vector<string> foods = {"Pizza", "Pasta", "Rice", "Brocoli", "Fried Eel", "Fish Ice Cream"};
-    cout << "Here are a list of my personal favorite foods: ";
+    vector<string> foods = {"Pizza", "Pasta", "Rice", "Brocoli", "Eel", "Fishpops"};
+    cout << "Here are a list of my personal favorite foods: "; // Initializes the vector
     for (auto i = foods.begin(); i != foods.end(); i++) {
         cout << *i << " ";
     }
     string food;
-    int idx;
+    int idx, idx2;
     cout << "\nNow, what is your favorite food? It has to be different than the other elements in the vector. ";
-    food = getline(cin, food);
+    getline(cin, food);
     cout << "\nWhat index would you like to your favorite food to be in? ";
     cin >> idx;
-    foods.insert(foods.begin() + idx, food);
-    cout << "Here is the new vector after adding your favorite food at index " << idx << ": ";
-    for (string food : foods) {
-        cout << food << " ";
+    if (idx > foods.size() - 1 || idx < 0) { // ENsures that the user doesn't type an invalid index
+        cout << "Unfortunately, that is not a valid index of the vector. Please restart the program." << endl;
     }
+    else {
+        foods.insert(foods.begin() + idx, food);
+        cout << "Here is the new vector after adding your favorite food at index " << idx << ": ";
+        for (string food : foods) { // Goes through each element in the vector
+            cout << food << " ";
+        }
+        cout << "\nSurely there is something here that you don't like, why don't you give me the index of the food that you don't like? ";
+        cin >> idx2;
+        if (idx2 > foods.size() - 1 || idx2 < 0) {
+            cout << "Unfortunately, that is not a valid index of the vector. Please restart the program." << endl;
+        }
+        else {
+            foods.erase(foods.begin() + idx2); // Removes the element at the index specified.
+            cout << "Here is the new vector after removing your least favorite food at index " << idx2 << ": ";
+            for (string food: foods) {
+                cout << food << " ";
+            }
+            vector<int> eles = storage(idx, idx2);
+            for (int i : eles) {
+                cout << eles[i] << " ";
+            }
+        }
+    }
+}
+
+// Extra:
+vector<int> storage(int ind1, int ind2) {
+    vector<int> storsys = {ind1, ind2};
+    return storsys;
 }
