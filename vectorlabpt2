@@ -2,7 +2,7 @@
 * Names: Raymond Zhang 
 * Program Name: Vector Lab Part 2
 * Date: 1/27/25
-* Extra: 
+* Extra: For my extra, I created a function that took in the two indices that the user inputted during the program and stored it within another vector. This then returns the vector so that it can be used in the main function.
 */
 #include <iostream>
 #include <vector>
@@ -24,7 +24,7 @@ int main() {
     getline(cin, food);
     cout << "\nWhat index would you like to your favorite food to be in? ";
     cin >> idx;
-    if (idx > foods.size() - 1 || idx < 0) { // ENsures that the user doesn't type an invalid index
+    if (idx > foods.size() - 1 || idx < 0) { // Ensures that the user doesn't type an invalid index
         cout << "Unfortunately, that is not a valid index of the vector. Please restart the program." << endl;
     }
     else {
@@ -45,8 +45,9 @@ int main() {
                 cout << food << " ";
             }
             vector<int> eles = storage(idx, idx2);
+            cout << "\nHere is the vector containing the two indices you inputted during the program: ";
             for (int i : eles) {
-                cout << eles[i] << " ";
+                cout << i << " ";
             }
         }
     }
