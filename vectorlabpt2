@@ -1,0 +1,29 @@
+/* 
+* Names: Raymond Zhang 
+* Program Name: Vector Lab Part 2
+* Date: 1/27/25
+* Extra: 
+*/
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+
+int main() {
+    vector<string> foods = {"Pizza", "Pasta", "Rice", "Brocoli", "Fried Eel", "Fish Ice Cream"};
+    cout << "Here are a list of my personal favorite foods: ";
+    for (auto i = foods.begin(); i != foods.end(); i++) {
+        cout << *i << " ";
+    }
+    string food;
+    int idx;
+    cout << "\nNow, what is your favorite food? It has to be different than the other elements in the vector. ";
+    food = getline(cin, food);
+    cout << "\nWhat index would you like to your favorite food to be in? ";
+    cin >> idx;
+    foods.insert(foods.begin() + idx, food);
+    cout << "Here is the new vector after adding your favorite food at index " << idx << ": ";
+    for (string food : foods) {
+        cout << food << " ";
+    }
+}
