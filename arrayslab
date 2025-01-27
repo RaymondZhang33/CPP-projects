@@ -62,9 +62,10 @@ int main() {
         if (age > 15) {
             over15++;
         }
-    }
-    float finalGrade[6] = {85.8, 93.7, 76, 88.5, 100, 91.3}; 
+    } 
     cout << "Out of the 20 people you entered, " << over15 << " were over the age of 15." << endl;
+
+    float finalGrade[6] = {85.8, 93.7, 76, 88.5, 100, 91.3};
     cout << "The average of the array {85.8, 93.7, 76, 88.5, 100, 91.3} is " << calcAverage(finalGrade, 6) << "." << endl;
 }
 // Question 4:
