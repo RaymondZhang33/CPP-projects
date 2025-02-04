@@ -1,0 +1,205 @@
+/* 
+* Names: Eduardo Galvao and Raymond Zhang
+* Program Name: Haunted House CYOA
+* Date: 10/17/24
+* Extra: We used usleep() to make the program move slower and thus seem a bit scarier. Also used ANSI color codes to fit the theme better.
+*/
+#include <iostream>
+#include <unistd.h>
+using namespace std;
+
+void slowPrinter(string line) {
+    for (int i = 0; i < line.length(); i++) {
+        cout << "\x1b[38;5;208m" << line[i] << flush; // Prints each letter of a given string in the color orange
+        usleep(50000);
+    }
+    cout << "\x1b[0m" << endl; // Breaks out of the orange color code.
+}
+void createEmptyLine() {
+    cout << "" << endl; // Prints out an empty line.
+}
+int main()
+{
+    int choice, choice2, choice3, choice4, choice5, combo;
+    bool key = false;
+    bool contLoop = true;
+    bool contLoop2 = true;
+    slowPrinter("E resides in the small town of Avon, North Carolina, right off the Cape Hatteras National Seashore. On a walk back home, he stares at an enormous mansion that sits right next to the shore. A teenager stumbles along the gravel, with a pile of $100 bills in his hand. His hand is covered in red, with strands of hair falling off his head every step he takes. ");
+    createEmptyLine();
+    slowPrinter("Kid, there's money to be made. The teenager smirks. ");
+    createEmptyLine();
+    slowPrinter("E feels the ground shaking beneath his feet. His legs tremble with fear, yet he steps further into the interminable darkness. His vision fades, and all he sees is a red light shining through the smallest window he has ever seen. ");
+    createEmptyLine();
+    cout << "\033[31;1mYour choice will determine the outcome of E..... " << endl;
+    createEmptyLine();
+    usleep(3000000);
+    cout << "You enter the haunted house.\033[0m " << endl;
+    createEmptyLine();
+    slowPrinter("It is dark. The dim lights make it almost impossible to see anything. The dirty windows don't help either."); 
+    createEmptyLine();
+    slowPrinter("You see three possible entrances. One leads to what appears to be an infinite staircase. Another leads to a dark and eerie hallway. The last entrance appears to lead into a dirty kitchen. Which option will you choose?");
+    createEmptyLine();
+    cout << "\033[31;1m1. Staircase\n2. Hallway\n3. Kitchen\nEnter a Number:\033[0m ";
+    cin >> choice; // Takes in an integer as user input
+    createEmptyLine();
+    switch(choice) {
+        case 1:
+            createEmptyLine();
+            cout << "\033[31;1m   O  " << endl;
+            cout << "  /|\\ " << endl;
+            cout << "  / \\" << endl;
+            cout << "  ___ " << endl;
+            cout << " |   |" << endl;
+            cout << " |   |" << endl;
+            cout << " |___|" << endl;
+            cout << " |   |" << endl;
+            cout << " |   |" << endl;
+            cout << " |___|" << endl;
+            cout << " |   |" << endl;
+            cout << " |   |" << endl;
+            cout << " |___|\033[0m" << endl;
+            createEmptyLine();
+            slowPrinter("You have decided to take the staircase.");
+            createEmptyLine();
+            slowPrinter("The stairs seem to go on infinitely with little light to see and darkness continues stretching on and on. Faulty malfunctioning wall-mounted lights help provide little guidance to you.");
+            slowPrinter("As you continue to descend down the infinite steps, your foot seems to dig into the old wood. As a result, your whole body crashes down through the wooden steps and you fall into a dark passage.");
+            slowPrinter("Darkness surrounds you, and all you can rely on is your limited hearing and a few small lights ahead. Eventually, you realize these lights are candles, the only solace from the dark. Heavy breathing and laughing pervades the darkness as you feel an eerie presence behind you. You turn your body 180 degrees and...");
+            slowPrinter("A floating doll with hooks pierced through its entire body charges towards you, with no mercy. You are soon slammed directly into a wall.");
+            slowPrinter("Your arms and legs try to break free from the supernatural force, but nothing budges. You soon feel a sharp pain on your arm, has a hook pierces directly into your skin. A hook drives into each of your arms and legs every second that passes. Before you perish due to the inflicted wounds, you hear dreadful words of the floating doll.");
+            slowPrinter("A wicked and nasty child was thrown into a pit.");
+            createEmptyLine();
+            slowPrinter("No food, light, or water was ever given to it.");
+            createEmptyLine();
+            slowPrinter("Punishment was dealt, without mercy or hestitation.");
+            createEmptyLine();
+            slowPrinter("As if justified by faith, or ownership from creation.");
+            createEmptyLine();
+            slowPrinter("It was no righteous act, it was hellish, demon sent.");
+            createEmptyLine();
+            slowPrinter("Eventually all will find out, in eternal torment.");
+            createEmptyLine();
+            slowPrinter(".........");
+            break;
+        case 2:
+            createEmptyLine();
+            slowPrinter("You have decided to enter the hallway.");
+            createEmptyLine();
+            slowPrinter("A broken nightstand leans against the hallway wall. You find yourself walking closer and closer to the nightstand. You stop right as the nightstand is in front of you. An eerie yellow light pervades one of the wooden drawers.");
+            slowPrinter("Look inside the drawer? Or ignore it? You decide your path.");
+            createEmptyLine();
+            cout << "\033[31;1m1. Look\n2. Ignore\nEnter a Number:\033[0m ";
+            cin >> choice2;
+            createEmptyLine();
+            if (choice2 == 1) {
+                slowPrinter("You have decided to look inside the drawer of the nightstand. Inside the drawer, a yellow glint covers a slightly damaged key. However, the key still looks okay to use.");
+                slowPrinter("Key added to inventory.");
+                key = true;
+            }
+            else if (choice2 == 2) {
+                slowPrinter("You decide to ignore the light coming from the drawer.");
+            }
+            else {
+                cout << "You entered an invalid choice. Please exit the program to restart your story." << endl;
+                break;
+            }
+            createEmptyLine();
+            while (contLoop) { // Runs infinitely until contLoop becomes false.
+                slowPrinter("In front of you lies four different doors.");
+                slowPrinter("The first door is wooden and contains scratches all over it, as if a monster was trying to break through.\n");
+                slowPrinter("The second door has a sign that reads 'Arboretum' hanging on it. This door like the first one was made of wood, exept it was in much better conditions. You also cant help but notice the vines growing out of the room from the borders of the door.\n");
+                slowPrinter("The third door is made of a much more refined material possibly some kind of metal. It looked as if it was from some kind of lab. The door also looks to be leaking some kind of liquid.\n");
+                slowPrinter("The fourth door looks normal. But it has a large padlock on it alongside a code combination lock. Clearly, this was meant to keep things out rather than in. What door do you want to try to enter?");
+                createEmptyLine();
+                cout << "\033[31;1m1. Door 1\n2. Door 2\n3. Door 3\n4. Door 4\n";
+                cout << "Enter a Number: \033[0m";
+                cin >> choice3;
+                createEmptyLine();
+                switch (choice3) {
+                    case 1:
+                        slowPrinter("The room looks to be a small but nonetheless charming wooden house in a field. The night outside is quiet and still not even so much a cricket chirping. Walking arround the house things feel off, like you cant shake off the feeling beeing watched. You continue into the cabin until you start to get tired so you find a bed and get down to rest. But, just as you sit apon the mattress, you feel it begin to move. Not in the way you would expect it to shifting with your body weight, but as if it is moving against something. You spring up realizing that the door you came into the room with is now closed and oly watch the bed something starts to crawl out of it. You could only see its large bulb eyes for a second before it began to quickly worm its way out of the mattress, bending and contorting in a way no being should be able to do. The beings entire body looked red and stiff as if it were made of living flesh animated into some horror unknown to the human mind. The face of the being having only those giant bug-like eyes and a toothy mouth. You barley had a moment to understand what it was before it charges at you with extreme speed, and then you feel hollow.");
+                        contLoop = false;
+                        break;
+                    case 2:
+                        slowPrinter("Walking into the room, you almost immediately trip on the vines that seem to cover the entire floor. In fact, not just the floor, but it looks like nearly every surface in this room is covered in some kind of foliage. Above you is a clear view of the night sky, moonlight spilling through the holes in the glass ceiling like a waterfall. As you proceed further into the room the extreme foliage does not let up, but you do start to see an influx of plants and flowers, some of which tower above you with tremendous size. However, you forget to watch your step and become stuck in sticky nectar attached to several small tendrils on a long and thin leaf. Then to your horror, the leaf starts to move, knocking you down onto your back, trapping it in place as well. You now can't move in the slightest only able to watch as the plant slowly rolls you up, as the last light you will see slowly disappears around you.");
+                        contLoop = false;
+                        break;
+                    case 3:
+                        slowPrinter("When you enter the room you realize that it was indeed a lab, except it doesn't look to be in the best condition, with electronics scattered all over the floor and everything in the room looking damaged in some way. Wires sparking at broken ends, computer screens cracked. You could tell that the black puddles on the ground were some kind of oil. But then you heard them. A bit deeper into the lab, you could see someone sitting on the floor as they started to move. At first, it looked normal enough, but now you can see the way it moved seemed wrong. Its limbs moved and bent in ways that looked impossible, contorting into shapes that looked nothing like a human. Then its head came into the light and the only thing you could see was hair until it started to slowly move its hands toward the head and began to forcefully turn the head 180 degrees when its face looked right at you. Nothing was there. No eyes, no teeth behind the slackjawed mouth, the nose looking flat and deformed. That's when you saw the hands in the light, they were limp and motionless, with a large gash on the back of them. A metallic replacement sticking out from the joint where that human hand should be on both sides. Its face lit up with a pair of yellow-glowing eyes and a fake mouth started to move. Then it all made sense, the way they moved, the missing flesh at random places on the body seemingly replaced with steel, the hands splitting open. It was wearing a corpse.");
+                        contLoop = false;
+                        break;
+                    case 4:
+                        if (key) {
+                            slowPrinter("The door is locked with a padlock and combination lock. Try using the key?");
+                            cout << "\033[31;1m1. Yes \n2. No" << endl;
+                            cout << "Enter a Number: \033[0m";
+                            cin >> choice4;
+                            createEmptyLine();
+                            if (choice4 == 1) {
+                                slowPrinter("You force the key into the padlock. It falls off the door, but there is still a combination lock.");
+                                while (contLoop2) {
+                                    cout << "\033[31;1mEnter the 4 Digit Combination: \033[0m" << endl;
+                                    cin >> combo;
+                                    createEmptyLine();
+                                    if (combo == 1234) {
+                                        slowPrinter("Correct :)");
+                                        createEmptyLine();
+                                        slowPrinter("The door creaks open. Walking inside you see a teenager, nearly bald, sitting at a computer, with several screens around them. On the screens you could see several rooms, all connected to this interface. Thats when it hits you.");
+                                        contLoop2 = false;
+                                        contLoop = false;
+                                    }
+                                    else {
+                                        cout << "\033[31;1mIncorrect, try again.\033[0m" << endl;
+                                    }
+                                }
+                            }
+                            else if (choice4 == 2) {
+                                break;
+                            }
+                        }
+                        else {
+                            slowPrinter("You attempt to kick the door down, but it does not budge.");
+                        }
+                        break;
+                    default:
+                        cout << "You did not enter one of the possible door numbers." << endl;
+                        break;
+                }
+            }
+            break;
+        case 3:
+            createEmptyLine();
+            slowPrinter("You have decided to enter the kitchen.");
+            createEmptyLine();
+            slowPrinter("As you walk against the stained countertops and several broken wooden chairs, you notice the number 1 written on the wall.");
+            createEmptyLine();
+            slowPrinter("After several minutes of investigating the trashed kitchen, you hear a cracking noise from above you. Looking up, you see a skeleton duct taped to the ceiling, its arms dangling in the air. You take a closer look.");
+            createEmptyLine();
+            slowPrinter("Reading one of the bones on the skeleton you see the number 2.");
+            createEmptyLine();
+            slowPrinter("Along one of the kitchen walls, you begin to notice a slight difference in the shades of grey on the wall. Placing your hand on the wall, you accidentally push through a piece of the kitchen wall. A dark entrance lies in front of you.");
+            createEmptyLine();
+            cout << "\033[31;1m1. Enter \n2. Ignore" << endl;
+            cout << "Enter a Number: \033[0m";
+            cin >> choice5;
+            createEmptyLine();
+            if (choice5 == 1) {
+                slowPrinter("You find yourself surrounded by darkness, seeming to be a common theme within this house. Your eyes lead you to another number in bold on the wall, 3. You continue to walk closer deeper in.");
+                createEmptyLine();
+                slowPrinter("Looking further, you see a bright light at the end of the dark path. As you continue to move closer, you hear voices from outside. At last, darkness meets light as you witness police lights flashing from outside. Your mother and punishment awaits you...");
+            }
+            else if (choice5 == 2) {
+                slowPrinter("You decide not to enter the dark path. ");
+                createEmptyLine();
+                slowPrinter("Turning around, you accidentally fall into a giant hole covered by a carpet. Deafening screams emerge from your mouth, but all is hopeless. Finding it impossible to climb such a height, along with having injuries in both legs, 4 days pass and you pass out from your declining health.");
+            }
+            else {
+                cout << "You entered an invalid choice. Please exit the program to restart your story." << endl;
+            }
+            break;
+        default:
+            createEmptyLine();
+            cout << "You entered an invalid choice. Please exit the program to restart your story." << endl;
+            break;
+    }
+    return 0;
+}
