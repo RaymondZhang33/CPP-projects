@@ -1,0 +1,77 @@
+/* 
+* Names: Raymond Zhang 
+* Program Name: 2D Arrays Lab
+* Date: 2/12/25
+* Extra: 
+*/
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    srand(time(0));
+    int num, num2, num3;
+    // Program #1
+    cout << "Enter the number of rows: ";
+    cin >> num;
+    cout << "Enter the number of columns: ";
+    cin >> num2;
+    int matrix[num][num2];
+    int maxele[3] = {0, 0, 0};
+    cout << "Generated Matrix:" << endl;
+    for (int i = 0; i < num; i++) {
+        for (int j = 0; j < num2; j++) {
+            matrix[i][j] = rand() % 50 + 1;
+            if (matrix[i][j] > maxele[0]) {
+                maxele[0] = matrix[i][j];
+                maxele[1] = i + 1; // Adjusted since indices dont align with actual row/column
+                maxele[2] = j + 1;
+            }
+            cout << matrix[i][j] << " ";
+        }
+        cout << "\n";
+    }
+    cout << "Maximum Element:" << endl;
+    cout << "Value: " << maxele[0] << endl;
+    cout << "Row: " << maxele[1] << endl;
+    cout << "Column: " << maxele[2] << endl;
+    // Program #2
+    cout << "\nEnter the size of the matrix (n): ";
+    cin >> num3;
+    int matrix2[num3][num3];
+    double sum = 0.0;
+    double average = 0.0;
+    cout << "Generated Matrix:" << endl;
+    for (int i = 0; i < num3; i++) {
+        for (int j = 0; j < num3; j++) {
+            matrix2[i][j] = rand() % 100 + 1;
+            cout << matrix2[i][j] << " ";
+        }
+        cout << "\n";
+    }
+    cout << "\nSum and Average per Row:" << endl;
+    for (int i = 0; i < num3; i++) {
+        for (int j = 0; j < num3; j++) {
+            sum += matrix2[i][j];
+        }
+        average += sum / num3;
+        cout << "Row " << i + 1 << ": Sum = " << sum << ", Average = " << fixed << setprecision(2) << average << endl;
+        sum = 0.0;
+        average = 0.0;
+    }
+    double sum2 = 0.0;
+    double average2 = 0.0;
+    cout << "\nSum and Average per Column:" << endl;
+    for (int j = 0; j < num3; j++) {
+        for (int i = 0; i < num3; i++) {
+            sum2 += matrix2[i][j];
+        }
+        average2 = sum2 / num3;
+        cout << "Column " << j + 1 << ": Sum = " << sum2 << ", Average = " << fixed << setprecision(2) << average2 << endl;
+        sum2 = 0.0;
+        average2 = 0.0;
+    }
+}
