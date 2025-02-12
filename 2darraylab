@@ -13,7 +13,7 @@ using namespace std;
 
 int main() {
     srand(time(0));
-    int num, num2, num3;
+    int num, num2, num3, num4;
     // Program #1
     cout << "Enter the number of rows: ";
     cin >> num;
@@ -74,4 +74,33 @@ int main() {
         sum2 = 0.0;
         average2 = 0.0;
     }
+    // Program #3
+    cout << "\nEnter the number of students: ";
+    cin >> num4;
+    int matrix3[num4][3];
+    cout << "Generated Exam Scores Matrix:" << endl;
+    cout << "Math  English  Science" << endl;
+    for (int i = 0; i < num4; i++) {
+        for (int j = 0; j < 3; j++) {
+            matrix3[i][j] = rand() % 51 + 50;
+            cout << matrix3[i][j] << "       ";
+        }
+        cout << "\n";
+    }
+    cout << "\nAverage Scores:" << endl;
+    double avgs[3];
+    double sum3 = 0.0;
+    double average3 = 0.0;
+    for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < num4; i++) {
+            sum3 += matrix3[i][j];
+        }
+        average3 = sum3 / num4;
+        avgs[j] = average3;
+        sum3 = 0.0;
+        average3 = 0.0;
+    }
+    cout << "Math: " << fixed << setprecision(1) << avgs[0] << endl;
+    cout << "English: " << fixed << setprecision(1) << avgs[1] << endl;
+    cout << "Science: " << fixed << setprecision(1) << avgs[2] << endl;
 }
