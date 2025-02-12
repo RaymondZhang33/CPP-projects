@@ -58,7 +58,7 @@ int main() {
             sum += matrix2[i][j];
         }
         average += sum / num3;
-        cout << "Row " << i + 1 << ": Sum = " << sum << ", Average = " << fixed << setprecision(2) << average << endl;
+        cout << "Row " << i + 1 << ": Sum = " << (int) sum << ", Average = " << fixed << setprecision(2) << average << endl;
         sum = 0.0;
         average = 0.0;
     }
@@ -70,7 +70,7 @@ int main() {
             sum2 += matrix2[i][j];
         }
         average2 = sum2 / num3;
-        cout << "Column " << j + 1 << ": Sum = " << sum2 << ", Average = " << fixed << setprecision(2) << average2 << endl;
+        cout << "Column " << j + 1 << ": Sum = " << (int) sum2 << ", Average = " << fixed << setprecision(2) << average2 << endl;
         sum2 = 0.0;
         average2 = 0.0;
     }
