@@ -87,7 +87,7 @@ int main() {
             if (matrix3[i][j] > 90) {
                 cout << "*";
             }
-            cout << matrix3[i][j] << "       ";
+            cout << matrix3[i][j] << "\t";
         }
         cout << "\n";
     }
