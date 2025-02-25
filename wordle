@@ -1,0 +1,150 @@
+/* 
+* Names: Raymond Zhang, Jenna Patel
+* Program Name: 2D Array Console Game
+* Date: 2/19/25
+* Extra: Hints 
+*/
+
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <unistd.h>
+#include <map>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+// Extra:
+
+void hint(string randomWord, vector<char>& guessed) { 
+    bool found = false;
+    int idx = 0;
+    while (!found) {
+        int index = rand() % 5;
+        auto pointer = find(guessed.begin(), guessed.end(), randomWord[index]);
+        if (pointer == guessed.end()) {
+            idx = index;
+            found = true;
+        }
+    }
+    cout << "Hint: One of the letters is: " << randomWord[idx] << ". Hopefully that helps!\n" << endl;
+}
+
+int main() {
+    string guess;
+    int guessamt = 1;
+    string green = "\033[48;5;82m";
+    string yellow = "\033[48;5;226m";
+    string reg = "\033[0m";
+    bool corr = false;
+    bool hintUsed = false;
+    string words[10] = {"BRAVE", "SHAPE", "LOWER", "PRESS", "BRINK", "STALL", "PINCH", "AGILE", "SWELL", "DRAPE"};
+    srand(time(NULL));
+    string randomWord = words[rand() % 10];
+    cout << "Welcome to Wordle! You have six attempts to guess the five letter word. A letter colored yellow means that the letter is in the word, but in the wrong spot. A letter colored green means that the letter is in the right spot. You can type the word 'hint' if you are struggling with the word. You can only use it once. Make your choices wisely.\n" << endl;
+    string guesses[6][5]; // Initializes 2D Array of 6 rows and 5 columns.
+    int row = 0;
+    vector<string> allguesses;
+    char lettas[26] = {'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'};
+    vector<char> lettasGuessed;
+    while (guessamt <= 6) {
+        cout << "Guesses: \n" << endl;
+        for (int i = 0; i < allguesses.size(); i++) {
+            cout << "Guess #" << i + 1 << ": " << allguesses[i] << endl;
+        }
+        cout << "\nLetters Guessed (GREEN = NOT GUESSED)\n" << endl;
+        for (int i = 0; i < 26; i++) {
+            auto poi = find(lettasGuessed.begin(), lettasGuessed.end(), lettas[i]);
+            if (poi != lettasGuessed.end()) { // If the letter is found
+                cout << lettas[i] << " ";
+            }
+            else { // If the letter is not found
+                cout << green << lettas[i] << reg << " ";
+            }
+            if (i == 9) { // Formatting
+                cout << "\n ";
+            }
+            else if (i == 18) {
+                cout << "\n  ";
+            }
+        }
+        cout << "\n\nGUESS #" << guessamt << " or type 'hint' for a hint: ";
+        cin >> guess;
+        if (guess == "hint" && !hintUsed) {
+            hint(randomWord, lettasGuessed); // Calls the hint function
+            hintUsed = true;
+            continue;
+        } 
+        else if (guess == "hint" && hintUsed) {
+            cout << "You already used your hint!" << endl;
+            continue;
+        }
+        if (guess.length() != 5) {
+            cout << "You did not enter a five letter word." << endl;
+            continue;
+        }
+        cout << "\n";
+        int times = 0;
+        for (int i = 0; i < guess.length(); i++) { 
+            guess[i] = toupper(guess[i]);
+            auto po = find(lettasGuessed.begin(), lettasGuessed.end(), guess[i]);
+            if (po == lettasGuessed.end()) { 
+                lettasGuessed.push_back(guess[i]); // Adds the letter to letter guessed vector only if it is not there yet.
+            }
+            guesses[row][i] = string(1, guess[i]);
+        }
+        if (guess == randomWord) {
+            cout << "\nYou win! You guessed the correct word! It took you " << guessamt << " attempts." << endl;
+            corr = true;
+            break;
+        }
+        string pholder = "";
+        // check for green letters
+        for (int i = 0; i < 5; i++) {
+            string temp = string(1, randomWord[i]);
+            if (guesses[row][i] == temp) {
+                guesses[row][i] = green + guesses[row][i] + reg;
+                pholder += "_";
+            }
+            else {
+                pholder += randomWord[i];
+            }
+        }
+        
+        // Example of How it Works
+        // (GREEN LETTERS) SSERP --> PRESS
+        // (YELLOW LETTERS) PRESS --> PR_SS --> _R_SS --> ____S --> _____
+        
+        // check for yellow letters
+        vector<int> uy(5, 0); // Makes a vector of 5 0s
+        for (int i = 0; i < 5; i++) {
+            char strchar = guesses[row][i][0];
+            auto it = find(pholder.begin(), pholder.end(), strchar); // Gets a pointer that sees if the letter is in the new randomword
+            if (it != pholder.end()) {
+                int idx = distance(pholder.begin(), it);
+                if (!uy[idx]) { // Checks if letter has not been marked yellow yet
+                   guesses[row][i] = yellow + guesses[row][i] + reg;
+                   uy[idx] = 1;
+                   pholder[idx] = '_'; // Placeholder for previously marked yellow letters
+                   cout << pholder;
+                }
+            }
+        }
+        string append = "";
+        for (int i = 0; i < 5; i++) {
+            cout << guesses[row][i];
+            append += guesses[row][i];
+        }
+        allguesses.push_back(append); // Adds the usersguesses to the vector
+        cout << "\n";
+        row++;
+        guessamt++; // Increments the guessamount variable
+        system("clear"); // Clears the terminal
+        sleep(1); // Pauses program for 1 second
+    }
+    if (!corr) { // Checks if the user did not get it right within 6 attempts
+        cout << "\nYou have used your six attempts. The correct word was " << randomWord << ". Better luck next time!" << endl;
+    }
+    return 0;
+    
+}
