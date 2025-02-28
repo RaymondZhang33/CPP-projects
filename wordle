@@ -132,7 +132,6 @@ int main() {
         }
         string append = "";
         for (int i = 0; i < 5; i++) {
-            cout << guesses[row][i];
             append += guesses[row][i];
         }
         allguesses.push_back(append); // Adds the usersguesses to the vector
